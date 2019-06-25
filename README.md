@@ -9,7 +9,7 @@
   rails 5.2.3
   PostgreSQL 9.5.17
 
-## Database tables
+## Model
 >### User Model
 
 | Column | Type | Description |
@@ -25,8 +25,8 @@
 | :--- | :--- | :--- |
 | id | integer | |
 | user_id | integer | foreign_key |
-| task-title | string | |
-| task-content | text | |
+| title | string | |
+| content | text | |
 | deadline | datetime | |
 | priority | string | |
 | status | string | |
@@ -44,4 +44,4 @@
 | Column | Type | Description |
 | :--- | :--- | :--- |
 | id | integer | |
-| label_name | string | |
+| name | string | |
