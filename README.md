@@ -17,7 +17,7 @@
 | id | integer | |
 | name | string | |
 | email | string | |
-| password_digest | |
+| password_digest | string | |
 
 >### Task Model
 
