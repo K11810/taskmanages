@@ -10,34 +10,38 @@
   PostgreSQL 9.5.17
 
 ## Database tables
-  ◆Users table
-  | Column | Type | Description |
-  | :--- | :--- | :--- |
-  | id | integer | |
-  | name | string | |
-  | email | string | |
-  | password_digest | |
+>### User Model
 
-  ◆Tasks table
-  | Column | Type | Description |
-  | :--- | :--- | :--- |
-  | id | integer | |
-  | user_id | integer | foreign_key |
-  | task-title | string | |
-  | task-content | text | |
-  | deadline | datetime | |
-  | priority | string | |
-  | status | string | |
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| id | integer | |
+| name | string | |
+| email | string | |
+| password_digest | |
 
-  ◆Tags table
-  | Column | Type | Description |
-  | :--- | :--- | :--- |
-  | id | integer | |
-  | task_id | integer | foreign_key |
-  | label_id | integer | foreign_key |
+>### Task Model
 
-  ◆Labels table
-  | Column | Type | Description |
-  | :--- | :--- | :--- |
-  | id | integer | |
-  | label_name | string | |
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| id | integer | |
+| user_id | integer | foreign_key |
+| task-title | string | |
+| task-content | text | |
+| deadline | datetime | |
+| priority | string | |
+| status | string | |
+
+>### Tag Model
+
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| id | integer | |
+| task_id | integer | foreign_key |
+| label_id | integer | foreign_key |
+
+>### Label Model
+
+| Column | Type | Description |
+| :--- | :--- | :--- |
+| id | integer | |
+| label_name | string | |
