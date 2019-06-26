@@ -31,7 +31,7 @@
 | priority | string | |
 | status | string | |
 
->### Tag Model
+>### Task_label Model
 
 | Column | Type | Description |
 | :--- | :--- | :--- |
