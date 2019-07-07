@@ -19,7 +19,7 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
   end
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(created_at: "desc")
   end
 
   def show
