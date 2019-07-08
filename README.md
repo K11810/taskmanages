@@ -1,13 +1,14 @@
 # README
 
 ## Repository name
-  タスク管理アプリ
-  万葉新入社員教育用カリキュラム <https://github.com/everyleaf/el-training>
+  タスク管理アプリ<br>
+  万葉新入社員教育用カリキュラム<br>
+  <https://github.com/everyleaf/el-training>
 
 ## System dependencies
-  ruby 2.6.3
-  rails 5.2.3
-  PostgreSQL 9.5.17
+  ruby 2.6.3<br>
+  rails 5.2.3<br>
+  PostgreSQL 9.5.17<br>
 
 ## Model
 >### User Model
@@ -46,15 +47,16 @@
 | id | integer | |
 | name | string | |
 
+<br>
 
 ## How to deploy the applications to Heroku
-●1.Herokuにログインする。
-    `heroku login --interactive`
-    ⇒Herokuに登録したメールアドレス、パスワードを入力
-●2.Herokuに新しいアプリケーションを作成する。
-    `heroku create`
-    ⇒出力されたhttps:～/がアプリケーションのURLになる。
-●3.Herokuへgit pushを行う。
-    `git push heroku master`
-●4.Heroku上のデータベースのマイグレーションを実行する。
-    `heroku run rails db:migrate`
+●1.Herokuにログインする。<br>
+`heroku login --interactive`<br>
+⇒Herokuに登録したメールアドレス、パスワードを入力<br>
+●2.Herokuに新しいアプリケーションを作成する。<br>
+`heroku create`<br>
+⇒出力されたhttps:～/がアプリケーションのURLになる。<br>
+●3.Herokuへgit pushを行う。<br>
+`git push heroku master`<br>
+●4.Heroku上のデータベースのマイグレーションを実行する。<br>
+`heroku run rails db:migrate`
