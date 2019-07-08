@@ -45,3 +45,16 @@
 | :--- | :--- | :--- |
 | id | integer | |
 | name | string | |
+
+
+## How to deploy the applications to Heroku
+●1.Herokuにログインする。
+    `heroku login --interactive`
+    ⇒Herokuに登録したメールアドレス、パスワードを入力
+●2.Herokuに新しいアプリケーションを作成する。
+    `heroku create`
+    ⇒出力されたhttps:～/がアプリケーションのURLになる。
+●3.Herokuへgit pushを行う。
+    `git push heroku master`
+●4.Heroku上のデータベースのマイグレーションを実行する。
+    `heroku run rails db:migrate`
