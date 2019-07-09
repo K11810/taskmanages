@@ -17,7 +17,7 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスク作成のテスト" do
     visit new_task_path
     fill_in 'タイトル', with: 'testtesttest'
-    fill_in '内容', with: 'samplesample'
+    fill_in 'タスク内容', with: 'samplesample'
     click_on '登録する'
     expect(page).to have_content'testtesttest'
     expect(page).to have_content'samplesample'
@@ -38,6 +38,22 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(Task.order("updated_at desc").map(&:id)).to eq [9,8]
     # テストのテスト用
     # expect(Task.order("updated_at asc").map(&:id)).to eq [9,8]
+  end
+
+  scenario "タスク終了期限の入力可否テスト" do
+    visit new_task_path
+    fill_in 'タイトル', with: 'testtesttest'
+    fill_in 'タスク内容', with: 'samplesample'
+    fill_in '終了期限', with: DateTime.now
+    click_on '登録する'
+    expect(page).to have_content '2019'
+  end
+
+   scenario "タスク終了期限順のソート可否テスト" do
+    visit root_path
+    click_on '終了期限でソートする'
+    @tasks = Task.all.order("deadline desc")
+    expect(@tasks[0].deadline > @tasks[1].deadline).to be true
   end
 
 end

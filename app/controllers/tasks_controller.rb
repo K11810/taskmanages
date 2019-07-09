@@ -19,7 +19,11 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
   end
 
   def index
-    @tasks = Task.all.order(created_at: "desc")
+    if params[:sort_expired].present?
+      @tasks = Task.all.order(deadline: "desc")
+    else
+      @tasks = Task.all.order(created_at: "desc")
+    end
   end
 
   def show
@@ -53,7 +57,7 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
     end
 
     def task_params
-	    params.require(:task).permit(:title, :content)
+	    params.require(:task).permit(:title, :content, :deadline)
 	  end
 
 end

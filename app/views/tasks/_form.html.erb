@@ -21,6 +21,11 @@
     <%= form.text_area :content, id: :task_content %>
   </div>
 
+  <div class="field">
+    <%= form.label :deadline %>
+    <%= form.date_field :deadline, id: :task_deadline %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
