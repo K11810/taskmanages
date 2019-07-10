@@ -21,6 +21,12 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
     if params[:sort_expired].present?
       @tasks = Task.all.order(deadline: "desc")
+    elsif params[:title] && params[:status]
+      @tasks = Task.where('title LIKE ? and status LIKE ?' , "%#{params[:title]}%","%#{params[:status]}%")
+    elsif params[:status]
+      @tasks = Task.where(title: params[:title])
+    elsif params[:title]
+      @tasks = Task.where(status: params[:status][:name])
     else
       @tasks = Task.all.order(created_at: "desc")
     end

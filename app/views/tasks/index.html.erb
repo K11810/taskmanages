@@ -2,6 +2,18 @@
 
 <p><%= notice %></p>
 
+<%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
+  <%= form.label :title_key, 'タイトル検索' %>
+  <%= form.text_field :title %>
+
+   <%= form.label :status_key, 'ステータス検索(0:未着手, 1:着手中, 2:完了)' %>
+   <%= select :status, :name, Task.statuses.values, include_blank: true %>
+   <%= form.hidden_field :search, value: 'true' %>
+
+   <%= form.submit '検索' %>
+  <%= link_to '戻る', tasks_path %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -32,3 +44,8 @@
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
 <br>
 <%= link_to 'タスク新規作成画面へ', new_task_path %>
+
+<% if params[:search] != "true" %>
+ <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+ <%= link_to 'ソートを戻す', tasks_path %>
+<% end %>
