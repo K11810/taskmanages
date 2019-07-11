@@ -7,7 +7,7 @@
   <%= form.text_field :title %>
 
    <%= form.label :status_key, 'ステータス検索(0:未着手, 1:着手中, 2:完了)' %>
-   <%= select :status, :name, Task.statuses.values, include_blank: true %>
+   <%= form.select :status, Task.statuses.values, include_blank: true %>
    <%= form.hidden_field :search, value: 'true' %>
 
    <%= form.submit '検索' %>
