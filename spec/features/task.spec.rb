@@ -59,7 +59,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     scenario "ステータス選択のみでのタスク検索実施可否テスト" do
       visit root_path
       fill_in 'title', with: ''
-      select '0', from: 'status'
+      select '未着手', from: 'status'
       click_on '検索'
       expect(page).to have_content 'testtesttest'
       expect(page).to_not have_content 'samplesample'
@@ -68,7 +68,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     scenario "タイトル・ステータス両方でのタスク検索実施可否テスト" do
       visit root_path
       fill_in 'title', with: 'test_'
-      select '1', from: 'status'
+      select '着手中', from: 'status'
       click_on '検索'
       expect(page).to have_content 'samplesample'
       expect(page).to_not have_content 'testtesttest'
