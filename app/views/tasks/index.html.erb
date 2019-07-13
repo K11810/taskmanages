@@ -41,11 +41,10 @@
 </table>
 
 <br>
-<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
-<br>
-<%= link_to 'タスク新規作成画面へ', new_task_path %>
-
 <% if params[:search] != "true" %>
  <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
- <%= link_to 'ソートを戻す', tasks_path %>
+<% else %>
+ <%= link_to '全てのタスクを表示する', tasks_path %>
 <% end %>
+<br>
+<%= link_to 'タスク新規作成画面へ', new_task_path %>

@@ -10,5 +10,6 @@ FactoryBot.define do
       title { 'test_task_02' }
       content { 'samplesample' }
       deadline { '2019-11-10'}
+      status { 1 }
     end
   end
