@@ -28,4 +28,12 @@ RSpec.feature Task, type: :model do
     expect(task).to be_valid
   end
 
+  scenario "title検索実施可否テスト" do
+      expect(Task.search_title("test_task_01")).to eq Task.where("title LIKE ?", "%#{"test_task_01"}%")
+   end
+
+  scenario "status検索実施可否テスト" do
+    expect(Task.search_status("未着手")).to eq Task.where(('CAST(status AS TEXT) LIKE ?'), "%#{ "未着手" }%")
+  end
+
 end

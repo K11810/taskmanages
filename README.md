@@ -28,9 +28,9 @@
 | user_id | integer | foreign_key |
 | title | string | |
 | content | text | |
-| deadline | datetime | |
+| deadline | date | |
 | priority | string | |
-| status | string | |
+| status | integer | |
 
 >### Task_label Model
 

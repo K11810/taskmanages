@@ -26,6 +26,11 @@
     <%= form.date_field :deadline, id: :task_deadline %>
   </div>
 
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Task.statuses.keys, id: 'status' %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

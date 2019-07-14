@@ -2,12 +2,25 @@
 
 <p><%= notice %></p>
 
+<%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
+  <%= form.label :title_key, 'タイトル検索' %>
+  <%= form.text_field :title %>
+
+   <%= form.label :status_key, 'ステータス検索'%>
+   <%= form.select :status,[["未着手", "0"],["着手中","1"],["完了","2"]], include_blank: true  %>
+   <%= form.hidden_field :search, value: 'true' %>
+
+   <%= form.submit '検索' %>
+  <%= link_to '戻る', tasks_path %>
+<% end %>
+
 <table>
   <thead>
     <tr>
       <th>タイトル</th>
       <th>内容</th>
       <th>終了期限</th>
+      <th>進捗</th>
     </tr>
   </thead>
 
@@ -17,6 +30,7 @@
         <td><%= task.title %></td>
         <td><%= task.content %></td>
         <td><%= task.deadline %></td>
+        <td><%= task.status %></td>
         <td><%= link_to '詳細', task_path(task.id) %></td>
         <td><%= link_to "編集", edit_task_path(task.id) %></td>
     　　<td><%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当にタスクを削除してよろしいですか？' } %></td>
@@ -27,6 +41,10 @@
 </table>
 
 <br>
-<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+<% if params[:search] != "true" %>
+ <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+<% else %>
+ <%= link_to '全てのタスクを表示する', tasks_path %>
+<% end %>
 <br>
 <%= link_to 'タスク新規作成画面へ', new_task_path %>
