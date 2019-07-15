@@ -8,3 +8,4 @@ ja:
         content: "タスク内容"
         deadline: "終了期限"
         status: "進捗"
+        priority: "優先度"

@@ -21,6 +21,7 @@
       <th>内容</th>
       <th>終了期限</th>
       <th>進捗</th>
+      <th>優先度</th>
     </tr>
   </thead>
 
@@ -31,6 +32,7 @@
         <td><%= task.content %></td>
         <td><%= task.deadline %></td>
         <td><%= task.status %></td>
+        <td><%= task.priority %></td>
         <td><%= link_to '詳細', task_path(task.id) %></td>
         <td><%= link_to "編集", edit_task_path(task.id) %></td>
     　　<td><%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当にタスクを削除してよろしいですか？' } %></td>
@@ -43,6 +45,7 @@
 <br>
 <% if params[:search] != "true" %>
  <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+ <%= link_to "優先度が高い順でソートする", tasks_path(sort_priority: "true") %>
 <% else %>
  <%= link_to '全てのタスクを表示する', tasks_path %>
 <% end %>
