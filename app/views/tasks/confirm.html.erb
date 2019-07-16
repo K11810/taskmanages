@@ -5,11 +5,13 @@
   <%= form.hidden_field :content %>
   <%= form.hidden_field :deadline %>
   <%= form.hidden_field :status %>
+  <%= form.hidden_field :priority %>
 
   <p>タイトル:<%= @task.title %></p>
   <p>本文:<%= @task.content %></p>
   <p>終了期限: <%= @task.deadline %></p>
   <p>進捗: <%= @task.status %></p>
+  <p>優先度: <%= @task.priority %></p>
 
   <%= form.submit  "登録する" %>
 <% end %>
@@ -19,6 +21,7 @@
   <%= form.hidden_field :content %>
   <%= form.hidden_field :deadline %>
   <%= form.hidden_field :status %>
+  <%= form.hidden_field :priority %>
 
   <%= form.submit "戻る", name: 'back' %>
 <% end %>

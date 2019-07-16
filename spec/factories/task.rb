@@ -11,5 +11,6 @@ FactoryBot.define do
       content { 'samplesample' }
       deadline { '2019-11-10'}
       status { 1 }
+      priority { 1 }
     end
   end
