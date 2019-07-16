@@ -74,4 +74,10 @@ RSpec.feature "タスク管理機能", type: :feature do
       expect(page).to_not have_content 'testtesttest'
     end
 
+    scenario "優先度の降順ソートテスト" do
+     visit root_path
+     click_on '優先度が高い順でソートする'
+     expect(Task.order('priority asc').map(&:priority)).to eq %w[高 中]
+   end
+
 end
