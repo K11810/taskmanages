@@ -1,4 +1,6 @@
-<h1>タスク一覧</h1>
+<div class="container">
+
+<h1 class="my-4">タスク一覧</h1>
 
 <p><%= notice %></p>
 
@@ -11,45 +13,47 @@
    <%= form.hidden_field :search, value: 'true' %>
 
    <%= form.submit '検索' %>
-  <%= link_to '戻る', tasks_path %>
 <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>内容</th>
-      <th>終了期限</th>
-      <th>進捗</th>
-      <th>優先度</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
+  <table>
     <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
-        <td><%= task.deadline %></td>
-        <td><%= task.status %></td>
-        <td><%= task.priority %></td>
-        <td><%= link_to '詳細', task_path(task.id) %></td>
-        <td><%= link_to "編集", edit_task_path(task.id) %></td>
-    　　<td><%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当にタスクを削除してよろしいですか？' } %></td>
-      </tr>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header"><%= task.title %></h4>
+          <div class="card-body">
+            <p class="card-text">
+              <p>終了期限:　<%= task.deadline %></p>
+              <p>状態:　<%= task.status %>
+              <p>優先度:　<%= task.priority %>
+            </p>
+          </div>
+          <div class="card-footer">
+            <%= link_to '詳細', task_path(task.id), class:"btn btn-primary" %>
+            <%= link_to "編集", edit_task_path(task.id), class:"btn btn-primary" %>
+        　　<%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当にタスクを削除してよろしいですか？' }, class:"btn btn-primary" %>
+          </div>
+        </div>
+      </div>
     <% end %>
-    </table>
-  </tbody>
-</table>
+  </table>
+</div>
 
 <br>
 <% if params[:search] != "true" %>
- <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
- <%= link_to "優先度が高い順でソートする", tasks_path(sort_priority: "true") %>
+ <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class:"btn btn-lg btn-secondary btn-block" %>
+ <%= link_to "優先度が高い順でソートする", tasks_path(sort_priority: "true"), class:"btn btn-lg btn-secondary btn-block" %>
 <% else %>
- <%= link_to '全てのタスクを表示する', tasks_path %>
+ <%= link_to '全てのタスクを表示する', tasks_path, class:"btn btn-lg btn-secondary btn-block" %>
 <% end %>
 <br>
-<%= link_to 'タスク新規作成画面へ', new_task_path %>
+<%= link_to 'タスク新規作成画面へ', new_task_path, class:"btn btn-lg btn-secondary btn-block" %>
 
-<%= paginate @tasks %>
+<!-- Pagination -->
+<ul class="pagination justify-content-center">
+  <li class="page-item">
+      <%= paginate @tasks %>
+  </li>
+</ul>
+
+</div>
