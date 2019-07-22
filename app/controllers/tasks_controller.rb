@@ -12,7 +12,7 @@ PER = 9
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 			if @task.save
 				redirect_to tasks_path, notice: "タスクを作成しました！"
 			else
@@ -56,8 +56,8 @@ PER = 9
   end
 
   def confirm
-    @task = Task.new(task_params)
-    render :new if @task.invalid?
+    @task = current_user.tasks.new(task_params)
+    render :new unless @task.valid?
   end
 
   private

@@ -22,14 +22,34 @@
           <%= link_to "Task Taskmanages", tasks_path, class: "navbar-brand" %>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <%= link_to "タスク一覧", tasks_path, class: "nav-link" %>
-              </li>
+              <% if logged_in? %>
+                <li class="nav-item">
+                  <%= link_to "プロフィール", user_path(current_user.id), class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "タスク一覧", tasks_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "nav-link" %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "サインアップ", new_user_path, class: "nav-link" %>
+                </li>
+                  <li class="nav-item">
+                  <%= link_to "ログイン", new_session_path, class: "nav-link" %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
       </nav>
     </header>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
 
     <%= yield %>
 

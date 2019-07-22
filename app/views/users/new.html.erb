@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mb-4">
+      <h1>サインアップ</h1>
+
+      <%= form_with(model: @user, local: true) do |f| %>
+
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> 件のエラーがあります。</h2>
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="control-group form-group">
+        <div class="controls">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+      </div>
+
+      <div class="control-group form-group">
+        <div class="controls">
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </div>
+      </div>
+
+      <div class="control-group form-group">
+        <div class="controls">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+      </div>
+
+      <div class="control-group form-group">
+        <div class="controls">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit class:"btn btn-primary", id:"sendMessageButton"%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

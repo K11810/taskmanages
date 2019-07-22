@@ -3,6 +3,7 @@
     <div class="col-lg-8 mb-4">
       <h1>タスク詳細画面</h1>
       <p>タイトル: <%= @task.title %></p>
+      <p>作成者: <%= @task.user.name %></p>
       <p>内容: <%= @task.content %></p>
       <p>終了期限: <%= @task.deadline %></p>
       <p>進捗: <%= @task.status %></p>

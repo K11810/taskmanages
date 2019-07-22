@@ -23,10 +23,10 @@
           <h4 class="card-header"><%= task.title %></h4>
           <div class="card-body">
             <p class="card-text">
+              <p>作成者: <%= task.user.name %></p>
               <p>終了期限:　<%= task.deadline %></p>
-              <p>状態:　<%= task.status %>
-              <p>優先度:　<%= task.priority %>
-            </p>
+              <p>状態:　<%= task.status %></p>
+              <p>優先度:　<%= task.priority %></p>
           </div>
           <div class="card-footer">
             <%= link_to '詳細', task_path(task.id), class:"btn btn-primary" %>

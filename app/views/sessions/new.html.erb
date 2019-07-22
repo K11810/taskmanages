@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mb-4">
+      <h1>ログイン画面</h1>
+
+      <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+
+      <div class="control-group form-group">
+        <div class="controls">
+          <%= f.label :"メールアドレス" %>
+          <%= f.email_field :email %>
+        </div>
+      </div>
+
+      <div class="control-group form-group">
+        <div class="controls">
+          <%= f.label :"パスワード" %>
+          <%= f.password_field :password %>
+        </div>
+      </div>
+
+      <div class="actions">
+          <%= f.submit "ログインする", class:"btn btn-primary", id:"sendMessageButton"%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
