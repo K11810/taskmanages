@@ -2,8 +2,6 @@
 
 <h1 class="my-4">タスク一覧</h1>
 
-<p><%= notice %></p>
-
 <%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
   <%= form.label :title_key, 'タイトル検索' %>
   <%= form.text_field :title %>
