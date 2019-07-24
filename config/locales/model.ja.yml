@@ -9,3 +9,8 @@ ja:
         deadline: "終了期限"
         status: "進捗"
         priority: "優先度"
+      user:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認用)"

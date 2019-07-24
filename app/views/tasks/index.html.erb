@@ -2,8 +2,6 @@
 
 <h1 class="my-4">タスク一覧</h1>
 
-<p><%= notice %></p>
-
 <%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
   <%= form.label :title_key, 'タイトル検索' %>
   <%= form.text_field :title %>
@@ -23,10 +21,10 @@
           <h4 class="card-header"><%= task.title %></h4>
           <div class="card-body">
             <p class="card-text">
+              <p>作成者: <%= task.user.name %></p>
               <p>終了期限:　<%= task.deadline %></p>
-              <p>状態:　<%= task.status %>
-              <p>優先度:　<%= task.priority %>
-            </p>
+              <p>状態:　<%= task.status %></p>
+              <p>優先度:　<%= task.priority %></p>
           </div>
           <div class="card-footer">
             <%= link_to '詳細', task_path(task.id), class:"btn btn-primary" %>

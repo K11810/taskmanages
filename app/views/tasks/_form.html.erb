@@ -13,35 +13,35 @@
 
     <div class="control-group form-group">
       <div class="controls">
-        <%= form.label :title %>
+        <%= form.label :"タイトル" %>
         <%= form.text_field :title, id: :task_title, class:"form-control"%>
       </div>
     </div>
 
     <div class="control-group form-group">
       <div class="controls">
-        <%= form.label :content %>
+        <%= form.label :"タスク内容" %>
         <%= form.text_area :content, id: :task_content, class:"form-control" %>
       </div>
     </div>
 
     <div class="control-group form-group">
       <div class="controls">
-        <%= form.label :deadline %>
+        <%= form.label :"終了期限" %>
         <%= form.date_field :deadline, id: :task_deadline, class:"form-control" %>
       </div>
     </div>
 
     <div class="control-group form-group">
       <div class="controls">
-        <%= form.label :status %>
+        <%= form.label :"進捗" %>
         <%= form.select :status, Task.statuses.keys, id: :status, class:"form-control" %>
       </div>
     </div>
 
     <div class="control-group form-group">
       <div class="controls">
-        <%= form.label :priority %>
+        <%= form.label :"優先度" %>
         <%= form.select :priority, Task.priorities.keys, id: :priority, class:"form-control" %>
       </div>
     </div>
@@ -49,6 +49,5 @@
   <div class="actions">
     <%= form.submit class:"btn btn-primary", id:"sendMessageButton"%>
   </div>
-
 
 <% end %>
