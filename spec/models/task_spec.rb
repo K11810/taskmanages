@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.feature Task, type: :model do
   background do
-    create(:task)
-    create(:second_task)
+    @user = create(:user1)
+    @tasktest1 = create(:task, user: @user)
+    @tasktest2 = create(:second_task, user: @user)
   end
 
   scenario "titleが空ならバリデーションが通らない" do
@@ -26,11 +27,6 @@ RSpec.feature Task, type: :model do
     expect(task).not_to be_valid
   end
 
-  scenario "title, content, deadlineに内容が記載されていればバリデーションが通る" do
-    task = Task.new(title: 'タイトル有りテスト', content: '内容有りテスト', deadline: '2000-01-01')
-    expect(task).to be_valid
-  end
-
   scenario "title検索実施可否テスト" do
     expect(Task.search_title("test_task_01")).to eq Task.where("title LIKE ?", "%#{"test_task_01"}%")
   end
@@ -45,12 +41,11 @@ RSpec.feature Task, type: :model do
   end
 
   scenario "title, content, deadline, status, priorityに内容が記載されていればバリデーションが通る" do
-    task = Task.new(title: 'タイトル有りテスト', content: '内容有りテスト', deadline: '2000-01-01', status:0, priority:0)
-    expect(task).to be_valid
+    expect(@tasktest1).to be_valid
   end
 
   scenario "priorityソート可否テスト" do
-    expect(Task.sort_priority).to eq Task.order(priority: :asc)    
+    expect(Task.sort_priority).to eq Task.order(priority: :asc)
   end
 
 end
