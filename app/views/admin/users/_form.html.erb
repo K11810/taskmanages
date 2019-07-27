@@ -17,28 +17,28 @@
         <div class="control-group form-group">
           <div class="controls">
             <%= f.label :name %>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, id: :admin_user_name %>
           </div>
         </div>
 
         <div class="control-group form-group">
           <div class="controls">
             <%= f.label :email %>
-            <%= f.email_field :email %>
+            <%= f.email_field :email, id: :admin_user_email %>
           </div>
         </div>
 
         <div class="control-group form-group">
           <div class="controls">
             <%= f.label :password %>
-            <%= f.password_field :password %>
+            <%= f.password_field :password, id: :admin_user_password %>
           </div>
         </div>
 
         <div class="control-group form-group">
           <div class="controls">
             <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation %>
+            <%= f.password_field :password_confirmation, id: :admin_user_password_confirm %>
           </div>
         </div>
 
