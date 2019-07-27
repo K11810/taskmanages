@@ -22,6 +22,7 @@
           <%= link_to "Task Manages", tasks_path, class: "navbar-brand" %>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <%= link_to "ユーザー管理画面", admin_users_path, class: "nav-link", id: :admin_link %>
               <% if logged_in? %>
                 <li class="nav-item">
                   <%= link_to "プロフィール", user_path(current_user.id), class: "nav-link" %>

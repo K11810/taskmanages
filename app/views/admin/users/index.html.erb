@@ -1,0 +1,31 @@
+<h1>管理者用ユーザー一覧画面</h1>
+
+<table border="1">
+  <tr>
+    <th id="name">ユーザー名</th>
+    <th id="email">メールアドレス</th>
+    <th id="count_tasks">タスク数</th>
+    <th>ユーザー情報操作</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.tasks.count %></td>
+      <td>
+        <%= link_to "詳細", admin_user_path(user.id), class:"btn btn-primary"%>
+        <%= link_to "編集", edit_admin_user_path(user.id), class:"btn btn-primary" %>
+        <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除してもいいですか?' }, class:"btn btn-primary" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to 'ユーザー新規作成画面へ', new_admin_user_path, class:"btn btn-lg btn-secondary btn-block" %>
+
+<ul class="pagination justify-content-center">
+  <li class="page-item">
+      <%= paginate @users %>
+  </li>
+</ul>
