@@ -19,6 +19,7 @@
 | name | string | |
 | email | string | |
 | password_digest | string | |
+| admin | boolean | |
 
 >### Task Model
 
