@@ -30,6 +30,13 @@
 
         <div class="control-group form-group">
           <div class="controls">
+            <%= f.label :admin %>
+            <%= f.check_box :admin, id: :admin_user_admin %>
+          </div>
+        </div>
+
+        <div class="control-group form-group">
+          <div class="controls">
             <%= f.label :password %>
             <%= f.password_field :password, id: :admin_user_password %>
           </div>

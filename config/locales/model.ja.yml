@@ -14,3 +14,4 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード(確認用)"
+        admin: "管理者権限"
