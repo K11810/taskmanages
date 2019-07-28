@@ -1,4 +1,7 @@
 class Admin::UsersController < ApplicationController
+  before_action :forbid_before_login
+  before_action :forbid_general_users
+  before_action :prohibited_admin_destroy, only: [:destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   PER = 10
@@ -28,8 +31,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_path, notice:"ユーザー「#{@user.name}」を削除しました"
+    if User.where(admin: true).count > 1
+      @user.destroy
+      redirect_to admin_users_path, notice:"ユーザー「#{@user.name}」を削除しました"
+    else
+      flash[:notice] = "管理者ユーザが存在しなくなるため「#{@user.name}」を削除出来ません。"
+      redirect_to admin_users_path
+    end
   end
 
   def update
@@ -47,7 +55,25 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name,:email,:password,:password_confirmation)
+    params.require(:user).permit(:name,:email,:password,:password_confirmation, :admin)
+  end
+
+  def forbid_before_login
+    unless current_user
+      redirect_to new_session_path , notice: "権限がありません"
+    end
+  end
+
+  def forbid_general_users
+    unless current_user.admin?
+     redirect_to root_path , notice: "権限がありません"
+    end
+  end
+
+  def prohibited_admin_destroy
+    if current_user.admin? && current_user === @user
+      redirect_to admin_users_path , notice: "管理者の削除はできません"
+    end
   end
 
 end
