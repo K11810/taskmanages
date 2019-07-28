@@ -1,7 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :forbid_before_login
   before_action :forbid_general_users
-  before_action :prohibited_admin_destroy, only: [:destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   PER = 10
@@ -44,7 +43,7 @@ class Admin::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」を編集しました！"
     else
-      render 'admin/edit'
+      render 'admin/users/show'
     end
   end
 
@@ -60,19 +59,13 @@ class Admin::UsersController < ApplicationController
 
   def forbid_before_login
     unless current_user
-      redirect_to new_session_path , notice: "権限がありません"
+      redirect_to new_session_path , notice: "管理者権限を持つユーザーでログインしてください。"
     end
   end
 
   def forbid_general_users
     unless current_user.admin?
-     redirect_to root_path , notice: "権限がありません"
-    end
-  end
-
-  def prohibited_admin_destroy
-    if current_user.admin? && current_user === @user
-      redirect_to admin_users_path , notice: "管理者の削除はできません"
+     redirect_to root_path , notice: "管理者権限がありません"
     end
   end
 
