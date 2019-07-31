@@ -12,14 +12,24 @@
                )
 end
 
-10.times do |n|
+#for first administrator
+User.create!(name:"sysadmin",
+            email:"sysadmin@dic.com",
+            password: "password",
+            password_confirmation: "password",
+            admin: "true"
+            )
+
+5.times do |n|
   name = Faker::Games::Pokemon.name
   email = Faker::Internet.email
   password = "password"
+  admin = "true"
   User.create!(name: name,
                email: email,
                password: password,
                password_confirmation: password,
+               admin: admin
                )
 end
 
