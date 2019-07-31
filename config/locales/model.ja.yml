@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       task: "タスク"
+      user: "ユーザー"
+      label: "ラベル"
     attributes:
       task:
         title: "タイトル"
@@ -15,3 +17,5 @@ ja:
         password: "パスワード"
         password_confirmation: "パスワード(確認用)"
         admin: "管理者権限"
+      label:
+        name: "ラベル名"

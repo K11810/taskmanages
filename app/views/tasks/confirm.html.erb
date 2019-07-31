@@ -9,12 +9,18 @@
         <%= form.hidden_field :deadline %>
         <%= form.hidden_field :status %>
         <%= form.hidden_field :priority %>
+        <% @label_ids.each do |label_id| %>
+          <%= hidden_field_tag 'task[label_ids][]', label_id %>
+        <% end %>
 
         <p>タイトル:<%= @task.title %></p>
         <p>本文:<%= @task.content %></p>
         <p>終了期限: <%= @task.deadline %></p>
         <p>進捗: <%= @task.status %></p>
         <p>優先度: <%= @task.priority %></p>
+        <% @task.labels.each do |label| %>
+          <p>ラベル名：<%= label.name %></p>
+        <% end %>
 
         <%= form.submit  "登録する", class:"btn btn-primary", id:"sendMessageButton" %>
       <% end %>
@@ -27,6 +33,9 @@
         <%= form.hidden_field :deadline %>
         <%= form.hidden_field :status %>
         <%= form.hidden_field :priority %>
+        <% @label_ids.each do |label_id| %>
+          <%= hidden_field_tag 'task[label_ids][]', label_id %>
+        <% end %>
 
         <%= form.submit "戻る", name: 'back',class:"btn btn-primary", id:"sendMessageButton" %>
       <% end %>
