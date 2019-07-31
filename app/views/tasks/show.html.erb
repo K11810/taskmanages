@@ -8,6 +8,9 @@
       <p>終了期限: <%= @task.deadline %></p>
       <p>進捗: <%= @task.status %></p>
       <p>優先度: <%= @task.priority %></p>
+      <% @task.labels.each do |label| %>
+        <p>ラベル名：<%= label.name %></p>
+      <% end %>
       <br>
       <%= link_to 'タスク一覧画面', tasks_path,class:"btn btn-primary", id:"sendMessageButton" %>
     </div>

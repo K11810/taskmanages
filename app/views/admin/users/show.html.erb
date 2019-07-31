@@ -20,6 +20,7 @@
             <th id="deadline">終了期限</th>
             <th id="status">進捗</th>
             <th id="priority">優先度</th>
+            <th id="label">ラベル</th>
             <th>タスク操作</th>
           </tr>
 
@@ -30,6 +31,11 @@
               <td><%= task.deadline %></td>
               <td><%= task.status %></td>
               <td><%= task.priority %></td>
+              <td>
+                <% task.labels.each do |label| %>
+                  <p>ラベル名：<%= label.name %></p>
+                <% end %>
+              </td>
               <td>
                 <%= link_to '詳細', task_path(task.id), class:"btn btn-primary" %>
                 <%= link_to '編集', edit_task_path(task.id), class:"btn btn-primary" %>

@@ -3,11 +3,12 @@ class TasksController < ApplicationController
   before_action :ensure_correct_user_to_task, only: [:show, :edit, :update, :destroy]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-PER = 9
+  PER = 9
 
   def new
     if params[:back]
       @task = Task.new(task_params)
+      @label_ids = params[:task][:label_ids]
     else
       @task = Task.new
     end
@@ -15,6 +16,7 @@ PER = 9
 
   def create
     @task = current_user.tasks.build(task_params)
+    @label_ids = params[:task][:label_ids]
 			if @task.save
 				redirect_to tasks_path, notice: "タスク「#{@task.title}」を作成しました"
 			else
@@ -59,6 +61,7 @@ PER = 9
 
   def confirm
     @task = current_user.tasks.new(task_params)
+    @label_ids = params[:task][:label_ids]
     render :new unless @task.valid?
   end
 
@@ -68,7 +71,14 @@ PER = 9
   end
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
+    params.require(:task).permit(
+      :title,
+      :content,
+      :deadline,
+      :status,
+      :priority,
+      label_ids: []
+    )
   end
 
   def ensure_correct_user_to_task

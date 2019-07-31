@@ -22,3 +22,8 @@ end
                password_confirmation: password,
                )
 end
+
+10.times do |n|
+  name = Faker::Book.genre
+  Label.create!(name: name)
+end
