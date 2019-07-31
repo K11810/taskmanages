@@ -1,3 +1,11 @@
+#for first administrator
+User.create!(name:"sysadmin",
+            email:"sysadmin@dic.com",
+            password: "password",
+            password_confirmation: "password",
+            admin: "true"
+            )
+
 50.times do |n|
   title = Faker::Music.band
   content = "seed_content"
@@ -12,13 +20,11 @@
                )
 end
 
-#for first administrator
-User.create!(name:"sysadmin",
-            email:"sysadmin@dic.com",
-            password: "password",
-            password_confirmation: "password",
-            admin: "true"
-            )
+10.times do |n|
+  name = Faker::Book.genre
+  Label.create!(name: name)
+end
+
 
 5.times do |n|
   name = Faker::Games::Pokemon.name
@@ -31,9 +37,4 @@ User.create!(name:"sysadmin",
                password_confirmation: password,
                admin: admin
                )
-end
-
-10.times do |n|
-  name = Faker::Book.genre
-  Label.create!(name: name)
 end
