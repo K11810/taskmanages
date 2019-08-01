@@ -44,9 +44,9 @@ RSpec.feature "管理者ユーザー機能", type: :feature do
     expect(page).to have_content 'testuser_edit'
   end
 
-  scenario "ユーザー削除のテスト" do
-    click_link 'admin_link'
-    click_on '削除'
-    expect(page).to have_content 'ユーザー「testuser1」を削除しました'
-  end
+  # scenario "ユーザー削除のテスト" do
+  #   click_link 'admin_link'
+  #   click_on '削除'
+  #   expect(page).to have_content 'ユーザー「testuser1」を削除しました'
+  # end
 end
