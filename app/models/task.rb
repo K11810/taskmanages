@@ -20,5 +20,6 @@ class Task < ApplicationRecord
   scope :sort_priority, -> { order(priority: :asc) }
   scope :search_title, -> (title){ where('title LIKE ?' , "%#{title}%") }
   scope :search_status, -> (params){ where(('CAST(status AS TEXT) LIKE ?'), "%#{ params }%") }
+  scope :search_label, -> (label_id){ where(id: label_ids = TaskLabel.where(label_id: label_id).pluck(:task_id))}
 
 end
