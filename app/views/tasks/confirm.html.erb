@@ -9,8 +9,11 @@
         <%= form.hidden_field :deadline %>
         <%= form.hidden_field :status %>
         <%= form.hidden_field :priority %>
-        <% @label_ids.each do |label_id| %>
-          <%= hidden_field_tag 'task[label_ids][]', label_id %>
+
+        <% if @label_ids.present? %>
+          <% @label_ids.each do |label_id| %>
+            <%= hidden_field_tag 'task[label_ids][]', label_id %>
+          <% end %>
         <% end %>
 
         <p>タイトル:<%= @task.title %></p>
@@ -33,8 +36,10 @@
         <%= form.hidden_field :deadline %>
         <%= form.hidden_field :status %>
         <%= form.hidden_field :priority %>
-        <% @label_ids.each do |label_id| %>
-          <%= hidden_field_tag 'task[label_ids][]', label_id %>
+        <% if @label_ids.present? %>
+          <% @label_ids.each do |label_id| %>
+            <%= hidden_field_tag 'task[label_ids][]', label_id %>
+          <% end %>
         <% end %>
 
         <%= form.submit "戻る", name: 'back',class:"btn btn-primary", id:"sendMessageButton" %>

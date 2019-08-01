@@ -29,12 +29,14 @@ class TasksController < ApplicationController
       @tasks = current_user.tasks.all.sort_deadline.page(params[:page]).per(PER)
     elsif params[:sort_priority].present?
       @tasks = current_user.tasks.all.sort_priority.page(params[:page]).per(PER)
-    elsif params[:title] && params[:status]
+    elsif params[:title] && params[:status].present?
       @tasks = current_user.tasks.search_title(params[:title]).search_status(params[:status]).page(params[:page]).per(PER)
-    elsif params[:status]
+    elsif params[:status].present?
       @tasks = current_user.tasks.search_status(params[:status]).page(params[:page]).per(PER)
-    elsif params[:title]
+    elsif params[:title].present?
       @tasks = current_user.tasks.search_title(params[:title]).page(params[:page]).per(PER)
+    elsif params[:label_id].present?
+      @tasks = current_user.tasks.search_label(params[:label_id]).page(params[:page]).per(PER)
     else
       @tasks = current_user.tasks.page(params[:page]).per(PER)
     end
@@ -87,5 +89,7 @@ class TasksController < ApplicationController
       redirect_to tasks_path, notice: "権限がありません."
     end
   end
+
+
 
 end
