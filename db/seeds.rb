@@ -6,25 +6,21 @@ User.create!(name:"sysadmin",
             admin: "true"
             )
 
-50.times do |n|
+5.times do |n|
   title = Faker::Music.band
   content = "seed_content"
   deadline = "2019-07-16"
   status = 1
   priority = 1
+  user_id = 1
   Task.create!(title: title,
                content: content,
                deadline: deadline,
                status: status,
                priority: priority,
+               user_id: user_id
                )
 end
-
-10.times do |n|
-  name = Faker::Book.genre
-  Label.create!(name: name)
-end
-
 
 5.times do |n|
   name = Faker::Games::Pokemon.name
@@ -37,4 +33,9 @@ end
                password_confirmation: password,
                admin: admin
                )
+end
+
+10.times do |n|
+  name = Faker::Book.genre
+  Label.create!(name: name)
 end
